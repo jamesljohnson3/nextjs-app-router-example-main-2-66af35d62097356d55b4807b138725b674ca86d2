@@ -8,6 +8,46 @@ import { RenderBuilderContent } from "@/components/builder";
 
 builder.init("406d1519eec3489ab76bedcaf2910259");
 
+async function fetchHeaderContent(urlPath: string) {
+
+  const model = "header";
+  try {
+    const content = await builder
+      .get(model, {
+        userAttributes: {
+          urlPath,
+        },
+        prerender: false,
+      })
+      .toPromise();
+    return <RenderBuilderContent content={content} model={model} />;
+  } catch (error) {
+    console.error("Failed to fetch Header content", error);
+    return <p>Failed to load Header.</p>;
+  }
+}
+
+export function Header() {
+  const [headerContent, setHeaderContent] = useState<JSX.Element | null>(null);
+
+  useEffect(() => {
+    const urlPath = window.location.pathname || '/';
+    fetchHeaderContent(urlPath).then((content) => {
+      setHeaderContent(content);
+    });
+  }, []);
+
+  if (!headerContent) {
+    return <p>Loading header2...</p>;
+  }
+
+  return (
+    <Suspense fallback={<p>Loading header...</p>}>
+      {headerContent}
+    </Suspense>
+  );
+}
+
 async function fetchFooterContent(urlPath: string) {
 
   const model = "footer";
