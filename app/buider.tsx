@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { builder } from "@builder.io/sdk";
 import { Suspense } from "react";
 import { RenderBuilderContent } from "@/components/builder";
-import {FullPageLoading} from './page-loading'
+import {FullPageLoading} from './page-loading-banner'
 builder.init("406d1519eec3489ab76bedcaf2910259");
 
 async function fetchHeaderContent(urlPath: string) {
