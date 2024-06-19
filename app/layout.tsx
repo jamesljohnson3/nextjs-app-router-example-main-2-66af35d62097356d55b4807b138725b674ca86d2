@@ -6,8 +6,8 @@ import type { Metadata } from 'next'
 
 
 export const metadata: Metadata = {
-  title: 'Glory Pest Control',
-  description: 'Professional pest control services for a pest-free environment Atlanta, Fulton, Clayton, Decatur Counties...',
+  title: 'My App',
+  description: '...',
 }
 export default function RootLayout({
   children,
