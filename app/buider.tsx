@@ -38,7 +38,7 @@ export function Footer() {
   }, []);
 
   if (!footerContent) {
-    return <p>Loading Footer...</p>;
+    return <p>Loading Footer2...</p>;
   }
 
   return (
