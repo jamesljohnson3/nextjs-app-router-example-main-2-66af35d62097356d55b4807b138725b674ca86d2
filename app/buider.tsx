@@ -6,6 +6,7 @@ import { builder } from "@builder.io/sdk";
 import { Suspense } from "react";
 import { RenderBuilderContent } from "@/components/builder";
 import {FullPageLoading} from './page-loading-banner'
+
 builder.init("406d1519eec3489ab76bedcaf2910259");
 
 async function fetchHeaderContent(urlPath: string) {
@@ -84,6 +85,85 @@ export function Footer() {
   return (
     <Suspense fallback={<p>Loading Footer...</p>}>
       {footerContent}
+    </Suspense>
+  );
+}
+async function fetchsecondblockContent(urlPath: string) {
+
+  const model = "second-block";
+  try {
+    const content = await builder
+      .get(model, {
+        userAttributes: {
+          urlPath,
+        },
+        prerender: false,
+      })
+      .toPromise();
+    return <RenderBuilderContent content={content} model={model} />;
+  } catch (error) {
+    console.error("Failed to fetch secondblock content", error);
+    return <p>Failed to load secondblock.</p>;
+  }
+}
+
+export function Secondblock() {
+  const [secondblockContent, setSecondblockContent] = useState<JSX.Element | null>(null);
+
+  useEffect(() => {
+    const urlPath = window.location.pathname || '/';
+    fetchsecondblockContent(urlPath).then((content) => {
+      setSecondblockContent(content);
+    });
+  }, []);
+
+  if (!secondblockContent) {
+    return <FullPageLoading/>;
+  }
+
+  return (
+    <Suspense fallback={<p>Loading Secondblock...</p>}>
+      {secondblockContent}
+    </Suspense>
+  );
+}
+
+async function fetchthirdblockContent(urlPath: string) {
+
+  const model = "third-block";
+  try {
+    const content = await builder
+      .get(model, {
+        userAttributes: {
+          urlPath,
+        },
+        prerender: false,
+      })
+      .toPromise();
+    return <RenderBuilderContent content={content} model={model} />;
+  } catch (error) {
+    console.error("Failed to fetch thirdblock content", error);
+    return <p>Failed to load thirdblock.</p>;
+  }
+}
+
+export function Thirdblock() {
+  const [thirdblockContent, setThirdblockContent] = useState<JSX.Element | null>(null);
+
+  useEffect(() => {
+    const urlPath = window.location.pathname || '/';
+    fetchthirdblockContent(urlPath).then((content) => {
+      setThirdblockContent(content);
+    });
+  }, []);
+
+  if (!thirdblockContent) {
+    return <FullPageLoading/>;
+  }
+
+  return (
+    <Suspense fallback={<p>Loading thirdblock...</p>}>
+      {thirdblockContent}
     </Suspense>
   );
 }
