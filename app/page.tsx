@@ -13,10 +13,7 @@ export default function SectionExample( ) {
   return (
     <>
     <Header/>
-    <Secondblock/>
-
-    <Thirdblock/>
-<Footer/>
+  
  
     </>
   );
