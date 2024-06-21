@@ -70,7 +70,7 @@ return (
 
 
 
-export default function SectionExample( ) {
+export default async function SectionExample( ) {
 
 
   return (
