@@ -70,7 +70,7 @@ return (
 
 
 
-export default async function SectionExample( ) {
+async function App() {
 
 
   return (
@@ -78,7 +78,6 @@ export default async function SectionExample( ) {
     <Header/>
     <MyComponent4 />
     <Login />
-    <SectionExample/>
     <Secondblock/>
 
     <Thirdblock/>
@@ -87,6 +86,7 @@ export default async function SectionExample( ) {
     </>
   );
 }
+export default App;
 
 async function Login() {
   const header = headers()
