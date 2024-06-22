@@ -77,7 +77,8 @@ async function App() {
     <>
     <Header/>
     <MyComponent4 />
-    <Login />
+
+
     <Secondblock/>
 
     <Thirdblock/>
